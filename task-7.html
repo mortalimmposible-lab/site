@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 7 — ОГЭ Инфо</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+	<script src="theme.js"></script>
+    <style>
+        .solution-btn { background: #60a5fa; color: #0f172a; border: none; border-radius: 30px; padding: 8px 20px; font-weight: bold; cursor: pointer; margin-top: 15px; transition: background 0.2s; }
+        .solution-btn:hover { background: #3b82f6; }
+        .solution-text { display: none; margin-top: 15px; padding: 15px; background: #0f172a; border-radius: 16px; border-left: 4px solid #60a5fa; color: #cbd5e1; }
+        .solution-text.show { display: block; }
+        .formula {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            text-align: center;
+            margin: 15px 0;
+            color: #60a5fa;
+            font-weight: bold;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header stepik-header">
+            <div class="logo"><span class="logo-text">ОГЭ Инфо</span></div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link">Курсы</a>
+<button id="theme-toggle" class="theme-btn" aria-label="Сменить тему">
+    <i class="fas fa-moon"></i>
+</button>
+            </nav>
+        </header>
+        <main class="main">
+            <div class="topic-header"><h1 class="page-title">Задание 7: Адресация (URL)</h1></div>
+            <div class="topic-content">
+                <section class="theory-section">
+                    <h2><i class="fas fa-book-open"></i> Формула (с каталогом)</h2>
+                    <div class="formula">
+                        Протокол :// Сервер / Каталог / Файл
+                    </div>
+                    <p>Если каталогов несколько, они просто идут друг за другом через косую черту (/):</p>
+                    <div class="formula">
+                        Протокол://Сервер/Папка1/Папка2/Файл
+                    </div>
+                    <ul>
+                        <li><strong>Протокол</strong> — http, https, ftp и т.д.</li>
+                        <li><strong>Сервер</strong> — доменное имя (например, obr.ru, files.net).</li>
+                        <li><strong>Каталог(и)</strong> — папки на сервере (могут отсутствовать или быть вложенными).</li>
+                        <li><strong>Файл</strong> — конечный документ с расширением (.html, .mp3, .docx и т.д.).</li>
+                    </ul>
+                </section>
+
+                <section class="theory-section">
+                    <h2><i class="fas fa-lightbulb"></i> Пример</h2>
+                    <p>Составьте URL из частей: <strong>ftp</strong>, <strong>net.ru</strong>, <strong>music</strong>, <strong>mp3</strong>, <strong>song.mp3</strong> (где music — папка, mp3 — подпапка, song.mp3 — файл).</p>
+                    <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                    <div class="solution-text">
+                        <strong>Решение:</strong><br>
+                        Протокол: ftp<br>
+                        Сервер: net.ru<br>
+                        Каталоги: music/mp3<br>
+                        Файл: song.mp3<br>
+                        <strong>Ответ:</strong> ftp://net.ru/music/mp3/song.mp3
+                    </div>
+                </section>
+            </div>
+            <div class="topic-navigation"><a href="courses.html" class="btn-topic"><i class="fas fa-arrow-left"></i> Назад к заданиям</a></div>
+        </main>
+        <footer class="footer"><p>&copy; 2026 ОГЭ Инфо</p></footer>
+    </div>
+    <script>
+        function toggleSolution(btn) {
+            const solutionDiv = btn.nextElementSibling;
+            solutionDiv.classList.toggle('show');
+            btn.textContent = solutionDiv.classList.contains('show') ? 'Скрыть решение' : 'Показать решение';
+        }
+    </script>
+</body>
+</html>

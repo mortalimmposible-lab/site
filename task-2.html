@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 2 — ОГЭ Инфо</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+	<script src="theme.js"></script>
+    <style>
+        .solution-btn { background: #60a5fa; color: #0f172a; border: none; border-radius: 30px; padding: 8px 20px; font-weight: bold; cursor: pointer; margin-top: 15px; transition: background 0.2s; }
+        .solution-btn:hover { background: #3b82f6; }
+        .solution-text { display: none; margin-top: 15px; padding: 15px; background: #0f172a; border-radius: 16px; border-left: 4px solid #60a5fa; color: #cbd5e1; }
+        .solution-text.show { display: block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header stepik-header">
+            <div class="logo"><span class="logo-text">ОГЭ Инфо</span></div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link">Курсы</a>
+<button id="theme-toggle" class="theme-btn" aria-label="Сменить тему">
+    <i class="fas fa-moon"></i>
+</button>
+            </nav>
+        </header>
+        <main class="main">
+            <div class="topic-header"><h1 class="page-title">Задание 2: Декодирование (однозначность)</h1></div>
+            <div class="topic-content">
+                <section class="theory-section">
+                    <h2><i class="fas fa-book-open"></i> Теория</h2>
+                    <p>Читай слева направо. Если код буквы является началом другой (например, А=01, Б=011), ищи вариант, который не оставляет «лишних» цифр в конце.</p>
+                </section>
+                
+                <section class="theory-section">
+                    <h2><i class="fas fa-chalkboard-teacher"></i> Метод «Сверху вниз» (вычёркивание)</h2>
+                    <p>Большинство ошибок случается, когда вы пытаетесь расшифровать всё сообщение сразу. Делайте это по одной букве:</p>
+                    <ul>
+                        <li>Смотрите на начало строки: сравнивайте первые символы сообщения с таблицей кодов.</li>
+                        <li>Ищите уникальность: если подходят сразу два варианта (например, «01» и «011»), проверьте, какой из них позволяет продолжить расшифровку дальше. Если на каком-то этапе цепочка обрывается — вы выбрали неверную букву раньше.</li>
+                    </ul>
+                </section>
+
+                <section class="theory-section">
+                    <h2><i class="fas fa-arrow-right"></i> Лайфхак: Проверка «с конца»</h2>
+                    <p>Если сообщение кажется слишком сложным или начало даёт много вариантов, попробуйте начать декодировать с последнего символа. Часто с конца последовательность расшифровывается однозначно и намного быстрее.</p>
+                </section>
+
+                <section class="theory-section">
+                    <h2><i class="fas fa-lightbulb"></i> Пример</h2>
+                    <p>Расшифруйте строку <strong>###!#!</strong>. Коды: # = О, #! = П, ## = С, !# = Р.</p>
+                    <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                    <div class="solution-text">
+                        <strong>Решение методом «Сверху вниз»:</strong><br>
+                        Смотрим начало: # – может быть О или начало ## (С) или #! (П). Пробуем ## → С. Остаток #!#!.<br>
+                        Далее #! → П. Остаток #! → П. Получили СПП.<br>
+                        Проверка с конца: последние !# → Р, но тогда остаток не бьётся. Значит, с конца не подходит.<br>
+                        <strong>Ответ:</strong> СПП.
+                    </div>
+                </section>
+            </div>
+            <div class="topic-navigation"><a href="courses.html" class="btn-topic"><i class="fas fa-arrow-left"></i> Назад к заданиям</a></div>
+        </main>
+        <footer class="footer"><p>&copy; 2026 ОГЭ Инфо</p></footer>
+    </div>
+    <script>
+        function toggleSolution(btn) {
+            const solutionDiv = btn.nextElementSibling;
+            solutionDiv.classList.toggle('show');
+            btn.textContent = solutionDiv.classList.contains('show') ? 'Скрыть решение' : 'Показать решение';
+        }
+    </script>
+</body>
+</html>

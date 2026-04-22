@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 3 — ОГЭ Инфо</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .solution-btn { background: var(--accent); color: var(--bg); border: none; border-radius: 30px; padding: 8px 20px; font-weight: bold; cursor: pointer; margin-top: 15px; transition: background 0.2s; }
+        .solution-btn:hover { background: var(--accent-hover); }
+        .solution-text { display: none; margin-top: 15px; padding: 15px; background: var(--bg); border-radius: 16px; border-left: 4px solid var(--accent); }
+        .solution-text.show { display: block; }
+        .algorithm-box {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 16px;
+            margin: 15px 0;
+            border-left: 4px solid var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header stepik-header" style="justify-content: space-between;">
+            <div class="logo"><span class="logo-text">ОГЭ Инфо</span></div>
+            <nav class="nav" style="justify-content: flex-start; gap: 20px;">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link">Курсы</a>
+                <button id="theme-toggle" class="theme-btn" aria-label="Сменить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </header>
+        <main class="main">
+            <div class="topic-header"><h1 class="page-title">Задание 3: Логика</h1></div>
+            <div class="topic-content">
+                <section class="theory-section">
+                    <h2><i class="fas fa-book-open"></i> Основные логические операции</h2>
+                    <ul>
+                        <li><strong>НЕ (Инверсия):</strong> Переворачивает смысл. Если условие X истинно, то НЕ X — ложно. По сути, НЕ (X > 5) превращается в X ≤ 5.</li>
+                        <li><strong>И (Конъюнкция):</strong> Выражение истинно, только если оба условия верны одновременно.</li>
+                        <li><strong>ИЛИ (Дизъюнкция):</strong> Выражение истинно, если верен хотя бы один из вариантов.</li>
+                    </ul>
+                </section>
+
+                <section class="theory-section">
+                    <h2><i class="fas fa-chalkboard-teacher"></i> Алгоритм решения</h2>
+                    <div class="algorithm-box">
+                        <ol>
+                            <li><strong>Избавьтесь от «НЕ»:</strong> Раскройте скобки, поменяв знаки (например, НЕ (X > 5) → X ≤ 5, НЕ (X < 10) → X ≥ 10).</li>
+                            <li><strong>Выпишите условия:</strong> Составьте список ограничений для X.</li>
+                            <li><strong>Найдите ответ:</strong> Подберите число, которое подходит под все условия одновременно (если стоит «И») или хотя бы одно (если «ИЛИ»).</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section class="theory-section">
+                    <h2><i class="fas fa-lightbulb"></i> Пример</h2>
+                    <p>Найдите наименьшее целое число X, для которого истинно выражение: (X > 16) И НЕ (X нечётное).</p>
+                    <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                    <div class="solution-text">
+                        <strong>Решение по алгоритму:</strong><br>
+                        1. Убираем НЕ: НЕ (X нечётное) = X чётное.<br>
+                        2. Условия: X > 16 и X чётное.<br>
+                        3. Первое чётное число больше 16 — это 18.<br>
+                        <strong>Ответ:</strong> 18.
+                    </div>
+                </section>
+            </div>
+            <div class="topic-navigation"><a href="courses.html" class="btn-topic"><i class="fas fa-arrow-left"></i> Назад к заданиям</a></div>
+        </main>
+        <footer class="footer"><p>&copy; 2026 ОГЭ Инфо</p></footer>
+    </div>
+    <script>
+        function toggleSolution(btn) {
+            const solutionDiv = btn.nextElementSibling;
+            solutionDiv.classList.toggle('show');
+            btn.textContent = solutionDiv.classList.contains('show') ? 'Скрыть решение' : 'Показать решение';
+        }
+    </script>
+    <script src="theme.js"></script>
+</body>
+</html>

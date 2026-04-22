@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задания ОГЭ — ОГЭ Инфо</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+	<script src="theme.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header stepik-header">
+            <div class="logo"><span class="logo-text">ОГЭ Инфо</span></div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link">Курсы</a>
+		<button id="theme-toggle" class="theme-btn" aria-label="Сменить тему">
+    			<i class="fas fa-moon"></i>
+		</button>
+            </nav>
+        </header>
+
+        <main class="main">
+            <h1 class="page-title animate-title">Теоретические задания ОГЭ (часть 1)</h1>
+            <p class="page-subtitle animate-subtitle">Задания 1–10: полный разбор теории и примеров</p>
+
+            <div class="courses-grid" id="tasks-grid">
+                <!-- 10 виджетов, генерируемых JS -->
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 ОГЭ Инфо. Материалы для подготовки к ОГЭ</p>
+        </footer>
+    </div>
+
+    <script>
+        const tasks = [
+            { num: 1, title: "Объём сообщения", desc: "Расчёт количества информации, перевод единиц" },
+            { num: 2, title: "Декодирование", desc: "Восстановление сообщений по кодовой таблице" },
+            { num: 3, title: "Логические выражения", desc: "Истинность, операции И, ИЛИ, НЕ" },
+            { num: 4, title: "Графы (таблицы)", desc: "Поиск кратчайшего пути между пунктами" },
+            { num: 5, title: "Исполнитель (алгоритмы)", desc: "Выполнение команд в прямом/обратном порядке" },
+            { num: 6, title: "Анализ программы", desc: "Условные операторы, ввод данных" },
+            { num: 7, title: "Адресация (URL)", desc: "Порядок частей веб-адреса" },
+            { num: 8, title: "Круги Эйлера", desc: "Формула включений-исключений для поиска" },
+            { num: 9, title: "Количество путей", desc: "Подсчёт маршрутов на графе" },
+            { num: 10, title: "Системы счисления", desc: "Перевод чисел в десятичную и обратно" }
+        ];
+
+        function renderTasks() {
+            const grid = document.getElementById('tasks-grid');
+            if (!grid) return;
+            grid.innerHTML = tasks.map((task, idx) => `
+                <div class="course-card animate-card" style="animation-delay: ${idx * 0.05}s">
+                    <div class="card-3d-object">
+                        <i class="fas fa-tasks"></i>
+                        <div class="object-shadow"></div>
+                    </div>
+                    <h3>Задание ${task.num}</h3>
+                    <h4 style="color: #60a5fa; margin: 5px 0;">${task.title}</h4>
+                    <p style="color: #cbd5e1; margin: 15px 0;">${task.desc}</p>
+                    <div class="task-badges">
+                        <span class="task-badge">ОГЭ</span>
+                        <span class="task-badge">Теория+пример</span>
+                    </div>
+                    <a href="task-${task.num}.html" class="btn-topic">Подробнее →</a>
+                </div>
+            `).join('');
+        }
+        document.addEventListener('DOMContentLoaded', renderTasks);
+    </script>
+</body>
+</html>

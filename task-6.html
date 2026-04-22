@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 6 — ОГЭ Инфо</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .solution-btn { background: var(--accent); color: var(--bg); border: none; border-radius: 30px; padding: 8px 20px; font-weight: bold; cursor: pointer; margin-top: 15px; transition: background 0.2s; }
+        .solution-btn:hover { background: var(--accent-hover); }
+        .solution-text { display: none; margin-top: 15px; padding: 15px; background: var(--bg); border-radius: 16px; border-left: 4px solid var(--accent); }
+        .solution-text.show { display: block; }
+        .algorithm-box, .tip-box {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 16px;
+            margin: 15px 0;
+            border-left: 4px solid var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header stepik-header">
+            <div class="logo"><span class="logo-text">ОГЭ Инфо</span></div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link">Курсы</a>
+                <button id="theme-toggle" class="theme-btn" aria-label="Сменить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </header>
+        <main class="main">
+            <div class="topic-header"><h1 class="page-title">Задание 6: Анализ программы (условный оператор)</h1></div>
+            <div class="topic-content">
+                <section class="theory-section">
+                    <h2><i class="fas fa-code"></i> 1. Выберите понятный язык</h2>
+                    <p>Не нужно смотреть на все пять вариантов кода. Выберите тот, который вы учите в школе (чаще всего это Python или Pascal). Логика везде одинаковая.</p>
+                </section>
+
+                <section class="theory-section">
+                    <h2><i class="fas fa-code-branch"></i> 2. Разберите условие (if)</h2>
+                    <p>Внимательно посмотрите на логическое выражение. В нем используются переменные (обычно s и t) и логические связки:</p>
+                    <ul>
+                        <li><strong>and (и)</strong> — условие верно, только если оба числа подходят.</li>
+                        <li><strong>or (или)</strong> — условие верно, если подходит хотя бы одно из двух чисел.</li>
+                    </ul>
+                    <div class="algorithm-box">
+                        <strong>Пример из демоверсии:</strong><br>
+                        if s > 10 or t > 10:<br>
+                        Это значит, что «YES» напечатается, если либо первое число больше 10, либо второе больше 10, либо оба сразу.
+                    </div>
+                </section>
+
+                <section class="theory-section">
+                    <h2><i class="fas fa-pencil-alt"></i> 3. Метод «черновика»</h2>
+                    <div class="algorithm-box">
+                        <p>Чтобы не ошибиться при подсчёте 9–10 пар чисел, делайте так:</p>
+                        <ol>
+                            <li>Выпишите пары чисел в столбик.</li>
+                            <li>Напротив каждой пары ставьте «+», если она подходит под условие, и «−», если нет.</li>
+                            <li>Посчитайте количество нужных знаков (сколько было «YES» или сколько «NO» — обязательно перечитайте вопрос перед ответом).</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section class="theory-section">
+                    <h2><i class="fas fa-exclamation-triangle"></i> 4. Типичные ловушки</h2>
+                    <div class="tip-box">
+                        <ul>
+                            <li><strong>Строгие и нестрогие знаки:</strong> Обращайте внимание на разницу между > (строго больше) и >= (больше или равно). Если условие s > 10, то число 10 не подходит.</li>
+                            <li><strong>Отрицательные числа:</strong> Будьте осторожны с ними. Например, -11 < -10.</li>
+                            <li><strong>Задачи с параметром A:</strong> В более сложных вариантах нужно найти такое целое A, при котором программа выведет «YES» определённое количество раз. В таких случаях лучше подставлять крайние значения из списка пар.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="theory-section">
+                    <h2><i class="fas fa-lightbulb"></i> 5. Пример</h2>
+                    <p>Условие: if s > 5 or t > 5. Дана пара (3, 8). Выведется ли YES?</p>
+                    <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                    <div class="solution-text">
+                        <strong>Решение:</strong><br>
+                        s=3 >5? Нет. t=8 >5? Да. Так как стоит OR (или), условие истинно.<br>
+                        <strong>Ответ:</strong> YES.
+                    </div>
+                </section>
+            </div>
+            <div class="topic-navigation"><a href="courses.html" class="btn-topic"><i class="fas fa-arrow-left"></i> Назад к заданиям</a></div>
+        </main>
+        <footer class="footer"><p>&copy; 2026 ОГЭ Инфо</p></footer>
+    </div>
+    <script>
+        function toggleSolution(btn) {
+            const solutionDiv = btn.nextElementSibling;
+            solutionDiv.classList.toggle('show');
+            btn.textContent = solutionDiv.classList.contains('show') ? 'Скрыть решение' : 'Показать решение';
+        }
+    </script>
+    <script src="theme.js"></script>
+</body>
+</html>

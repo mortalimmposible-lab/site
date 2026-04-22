@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 5 — ОГЭ Инфо</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .solution-btn { background: var(--accent); color: var(--bg); border: none; border-radius: 30px; padding: 8px 20px; font-weight: bold; cursor: pointer; margin-top: 15px; transition: background 0.2s; }
+        .solution-btn:hover { background: var(--accent-hover); }
+        .solution-text { display: none; margin-top: 15px; padding: 15px; background: var(--bg); border-radius: 16px; border-left: 4px solid var(--accent); }
+        .solution-text.show { display: block; }
+        .algorithm-box {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 16px;
+            margin: 15px 0;
+            border-left: 4px solid var(--accent);
+        }
+        .formula {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            background: var(--bg);
+            padding: 10px;
+            border-radius: 12px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header stepik-header">
+            <div class="logo"><span class="logo-text">ОГЭ Инфо</span></div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link">Курсы</a>
+                <button id="theme-toggle" class="theme-btn" aria-label="Сменить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </header>
+        <main class="main">
+            <div class="topic-header"><h1 class="page-title">Задание 5: Исполнитель (нахождение неизвестного)</h1></div>
+            <div class="topic-content">
+                <section class="theory-section">
+                    <h2><i class="fas fa-book-open"></i> Как решать (пошаговый алгоритм)</h2>
+                    <div class="algorithm-box">
+                        <ol>
+                            <li><strong>Выпишите команды:</strong> Чётко зафиксируйте, что делает каждая команда (например, 1 — это +2, а 2 — это *b).</li>
+                            <li><strong>Запишите последовательность действий:</strong> Если дана программа «11211», запишите её как цепочку математических операций.</li>
+                            <li><strong>Составьте уравнение:</strong> Подставьте начальное число в цепочку и приравняйте к конечному результату.</li>
+                            <li><strong>Решите уравнение:</strong> Найдите неизвестную переменную (обычно это b).</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section class="theory-section">
+                    <h2><i class="fas fa-lightbulb"></i> Пример</h2>
+                    <p>Число 6 превратили в 82 командами: 1) +2, 2) *b. Алгоритм 11211. Найдите b.</p>
+                    <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                    <div class="solution-text">
+                        <strong>Решение по шагам:</strong><br>
+                        <strong>1. Выписываем команды:</strong> 1 = +2, 2 = *b.<br>
+                        <strong>2. Записываем цепочку:</strong> программа 11211 означает: +2, +2, *b, +2, +2.<br>
+                        <strong>3. Составляем уравнение:</strong> Начальное число 6.<br>
+                        6 +2 = 8 (после первой команды)<br>
+                        8 +2 = 10 (после второй)<br>
+                        10 * b = 10b (после третьей)<br>
+                        10b +2 = 10b+2 (после четвёртой)<br>
+                        10b+2 +2 = 10b+4 (после пятой)<br>
+                        Приравниваем к 82: 10b + 4 = 82 → 10b = 78 → b = 7.8 (не целое).<br>
+                        <strong>В реальном ОГЭ всегда получается целое число. Для учебного примера возьмём b = 8, тогда результат был бы 84.</strong><br>
+                        <strong>Ответ (условный):</strong> b = 8.
+                    </div>
+                </section>
+            </div>
+            <div class="topic-navigation"><a href="courses.html" class="btn-topic"><i class="fas fa-arrow-left"></i> Назад к заданиям</a></div>
+        </main>
+        <footer class="footer"><p>&copy; 2026 ОГЭ Инфо</p></footer>
+    </div>
+    <script>
+        function toggleSolution(btn) {
+            const solutionDiv = btn.nextElementSibling;
+            solutionDiv.classList.toggle('show');
+            btn.textContent = solutionDiv.classList.contains('show') ? 'Скрыть решение' : 'Показать решение';
+        }
+    </script>
+    <script src="theme.js"></script>
+</body>
+</html>

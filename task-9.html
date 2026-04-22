@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 9 — ОГЭ Инфо</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .solution-btn { background: var(--accent); color: var(--bg); border: none; border-radius: 30px; padding: 8px 20px; font-weight: bold; cursor: pointer; margin-top: 15px; transition: background 0.2s; }
+        .solution-btn:hover { background: var(--accent-hover); }
+        .solution-text { display: none; margin-top: 15px; padding: 15px; background: var(--bg); border-radius: 16px; border-left: 4px solid var(--accent); }
+        .solution-text.show { display: block; }
+        .algorithm-box, .tip-box {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 16px;
+            margin: 15px 0;
+            border-left: 4px solid var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header stepik-header">
+            <div class="logo"><span class="logo-text">ОГЭ Инфо</span></div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link">Курсы</a>
+                <button id="theme-toggle" class="theme-btn" aria-label="Сменить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </header>
+        <main class="main">
+            <div class="topic-header"><h1 class="page-title">Задание 9: Подсчёт количества путей в графе</h1></div>
+            <div class="topic-content">
+                <section class="theory-section">
+                    <h2><i class="fas fa-chalkboard-teacher"></i> Пошаговый алгоритм решения</h2>
+                    <div class="algorithm-box">
+                        <ol>
+                            <li><strong>Точка старта:</strong> Возле начального города (например, А) ставим цифру 1. Это значит, что в пункт А есть 1 способ попасть (мы уже там).</li>
+                            <li><strong>Движение по графу:</strong> Идём к следующим городам по стрелкам. Количество путей в текущий город равно сумме цифр во всех городах, из которых в него ведут стрелки.</li>
+                            <li><strong>Правило очередности:</strong> Нельзя считать город, если ещё не посчитаны все города, из которых в него ведут дороги.<br>
+                                <em>Пример:</em> Если в город В ведут стрелки из А и Б, сначала нужно узнать значения и для А, и для Б.</li>
+                            <li><strong>Финальная точка:</strong> Число, которое получится в конечном пункте, и будет ответом.</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section class="theory-section">
+                    <h2><i class="fas fa-route"></i> Если есть дополнительные условия</h2>
+                    <div class="tip-box">
+                        <p><strong>«Путь проходит через город K»:</strong><br>
+                        Сначала удалите (зачеркните) все дороги, которые ведут в обход города K.<br>
+                        Посчитайте пути только по оставшимся стрелкам, которые гарантированно ведут в K, а затем из него.</p>
+                        <p><strong>«Путь НЕ проходит через город K»:</strong><br>
+                        Просто зачеркните сам город K и все стрелки, которые в него входят или из него выходят.<br>
+                        Посчитайте количество путей по оставшейся схеме.</p>
+                    </div>
+                </section>
+
+                <section class="theory-section">
+                    <h2><i class="fas fa-lightbulb"></i> Пример</h2>
+                    <p>Граф: A→B, A→C, B→D, C→D. Найдите количество путей из A в D.</p>
+                    <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                    <div class="solution-text">
+                        <strong>Решение по алгоритму:</strong><br>
+                        1. В А ставим 1.<br>
+                        2. В B ведёт только из A → B = 1.<br>
+                        3. В C ведёт только из A → C = 1.<br>
+                        4. В D ведут стрелки из B (1) и из C (1) → D = 1+1 = 2.<br>
+                        <strong>Ответ:</strong> 2.
+                    </div>
+                </section>
+            </div>
+            <div class="topic-navigation"><a href="courses.html" class="btn-topic"><i class="fas fa-arrow-left"></i> Назад к заданиям</a></div>
+        </main>
+        <footer class="footer"><p>&copy; 2026 ОГЭ Инфо</p></footer>
+    </div>
+    <script>
+        function toggleSolution(btn) {
+            const solutionDiv = btn.nextElementSibling;
+            solutionDiv.classList.toggle('show');
+            btn.textContent = solutionDiv.classList.contains('show') ? 'Скрыть решение' : 'Показать решение';
+        }
+    </script>
+    <script src="theme.js"></script>
+</body>
+</html>

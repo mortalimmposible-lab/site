@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 1 — ОГЭ Инфо</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+	<script src="theme.js"></script>
+    <style>
+        .solution-btn {
+            background: #60a5fa;
+            color: #0f172a;
+            border: none;
+            border-radius: 30px;
+            padding: 8px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.2s;
+        }
+        .solution-btn:hover {
+            background: #3b82f6;
+        }
+        .solution-text {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #0f172a;
+            border-radius: 16px;
+            border-left: 4px solid #60a5fa;
+            color: #cbd5e1;
+        }
+        .solution-text.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header stepik-header">
+            <div class="logo"><span class="logo-text">ОГЭ Инфо</span></div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link">Курсы</a>
+<button id="theme-toggle" class="theme-btn" aria-label="Сменить тему">
+    <i class="fas fa-moon"></i>
+</button>
+            </nav>
+        </header>
+        <main class="main">
+            <div class="topic-header"><h1 class="page-title">Задание 1: Объём памяти</h1></div>
+            <div class="topic-content">
+                <section class="theory-section">
+                    <h2><i class="fas fa-book-open"></i> Теория</h2>
+                    <p><strong>I = k × i</strong>, где I — объём (бит/байт), k — количество символов, i — вес одного символа.</p>
+                    <p><strong>Веса (нужно выучить):</strong> 8 бит = 1 байт, 16 бит = 2 байта (Unicode), 32 бита = 4 байта.</p>
+                </section>
+                <section class="theory-section">
+                    <h2><i class="fas fa-exclamation-triangle"></i> Нюанс (ловушка с «лишними» символами)</h2>
+                    <p>Когда вычёркивают слово, размер уменьшается ещё и на запятую и пробел (это +2 символа к длине слова).</p>
+                </section>
+                <section class="theory-section">
+                    <h2><i class="fas fa-lightbulb"></i> Пример</h2>
+                    <p>В кодировке Unicode (16 бит = 2 байта) размер фразы уменьшился на 12 байт. Найдите длину слова.</p>
+                    <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                    <div class="solution-text">
+                        <strong>Решение:</strong><br>
+                        Количество символов = 12 байт / 2 байта = 6 символов.<br>
+                        Вычитаем запятую и пробел: 6 – 2 = 4 символа.<br>
+                        <strong>Ответ:</strong> 4 (например, слово «слон»).
+                    </div>
+                </section>
+            </div>
+            <div class="topic-navigation"><a href="courses.html" class="btn-topic"><i class="fas fa-arrow-left"></i> Назад к заданиям</a></div>
+        </main>
+        <footer class="footer"><p>&copy; 2026 ОГЭ Инфо</p></footer>
+    </div>
+    <script>
+        function toggleSolution(btn) {
+            const solutionDiv = btn.nextElementSibling;
+            solutionDiv.classList.toggle('show');
+            btn.textContent = solutionDiv.classList.contains('show') ? 'Скрыть решение' : 'Показать решение';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 8 — ОГЭ Инфо</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+	<script src="theme.js"></script>
+    <style>
+        .solution-btn { background: #60a5fa; color: #0f172a; border: none; border-radius: 30px; padding: 8px 20px; font-weight: bold; cursor: pointer; margin-top: 15px; transition: background 0.2s; }
+        .solution-btn:hover { background: #3b82f6; }
+        .solution-text { display: none; margin-top: 15px; padding: 15px; background: #0f172a; border-radius: 16px; border-left: 4px solid #60a5fa; color: #cbd5e1; }
+        .solution-text.show { display: block; }
+        .formula {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 16px;
+            font-size: 1.2rem;
+            text-align: center;
+            margin: 15px 0;
+            color: #60a5fa;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header stepik-header">
+            <div class="logo"><span class="logo-text">ОГЭ Инфо</span></div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link">Курсы</a>
+<button id="theme-toggle" class="theme-btn" aria-label="Сменить тему">
+    <i class="fas fa-moon"></i>
+</button>
+            </nav>
+        </header>
+        <main class="main">
+            <div class="topic-header"><h1 class="page-title">Задание 8: Поисковые запросы (круги Эйлера)</h1></div>
+            <div class="topic-content">
+                <section class="theory-section">
+                    <h2><i class="fas fa-book-open"></i> 1. Главная формула</h2>
+                    <div class="formula">
+                        |A ∪ B| = |A| + |B| – |A ∩ B|
+                    </div>
+                    <ul>
+                        <li><strong>|A|</strong> — количество страниц по первому слову.</li>
+                        <li><strong>|B|</strong> — количество страниц по второму слову.</li>
+                        <li><strong>|A ∩ B|</strong> — запрос с «И» (пересечение, обычно самое маленькое число).</li>
+                        <li><strong>|A ∪ B|</strong> — запрос с «ИЛИ» (объединение, самое большое число).</li>
+                    </ul>
+                    <p>Тебе всегда даны три значения из четырех. Просто подставь их в формулу и найди неизвестное.</p>
+                </section>
+
+                <section class="theory-section">
+                    <h2><i class="fas fa-lightbulb"></i> 2. Лайфхак «Сложи бока — вычти лишнее»</h2>
+                    <p>Если лень запоминать формулу, запомни логику:</p>
+                    <ul>
+                        <li>Сложи одиночные запросы (|A| + |B|).</li>
+                        <li>Вычти из них либо |A ∩ B|, либо |A ∪ B| (то, что дано в условии).</li>
+                        <li>Получишь оставшуюся часть.</li>
+                    </ul>
+                </section>
+
+                <section class="theory-section">
+                    <h2><i class="fas fa-chalkboard-teacher"></i> Пример</h2>
+                    <p>Дано: Орёл = 500, Решка = 400, Орёл & Решка = 100. Найдите количество страниц по запросу Орёл | Решка.</p>
+                    <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                    <div class="solution-text">
+                        <strong>Решение по формуле:</strong><br>
+                        |Орёл ∪ Решка| = |Орёл| + |Решка| – |Орёл ∩ Решка| = 500 + 400 – 100 = 800.<br>
+                        <strong>Лайфхак:</strong> складываем бока (500+400=900), вычитаем лишнее (100) → 800.<br>
+                        <strong>Ответ:</strong> 800.
+                    </div>
+                </section>
+            </div>
+            <div class="topic-navigation"><a href="courses.html" class="btn-topic"><i class="fas fa-arrow-left"></i> Назад к заданиям</a></div>
+        </main>
+        <footer class="footer"><p>&copy; 2026 ОГЭ Инфо</p></footer>
+    </div>
+    <script>
+        function toggleSolution(btn) {
+            const solutionDiv = btn.nextElementSibling;
+            solutionDiv.classList.toggle('show');
+            btn.textContent = solutionDiv.classList.contains('show') ? 'Скрыть решение' : 'Показать решение';
+        }
+    </script>
+</body>
+</html>
