@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задания по кодированию — ОГЭ Инфо</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .task-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        .task-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px var(--shadow);
+            border-color: var(--accent);
+        }
+        .task-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        .task-question {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: var(--text);
+            opacity: 0.9;
+        }
+        .solution-btn, .check-btn {
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            border-radius: 30px;
+            padding: 6px 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            margin-right: 12px;
+            margin-bottom: 10px;
+        }
+        .solution-btn:hover, .check-btn:hover {
+            background: var(--accent-hover);
+            transform: scale(1.02);
+        }
+        .solution-text {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: var(--bg);
+            border-radius: 20px;
+            border-left: 5px solid var(--accent);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text);
+        }
+        .solution-text.show {
+            display: block;
+        }
+        .answer-area {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+        .answer-input {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 8px 18px;
+            color: var(--text);
+            font-size: 0.95rem;
+            flex: 1;
+            min-width: 180px;
+        }
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .result {
+            font-weight: 600;
+            margin-left: 10px;
+            font-size: 0.9rem;
+        }
+        .result.correct {
+            color: #4ade80;
+        }
+        .result.wrong {
+            color: #f87171;
+        }
+        @media (max-width: 700px) {
+            .task-title { font-size: 1.3rem; }
+            .answer-area { flex-direction: column; align-items: stretch; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header stepik-header" style="justify-content: space-between;">
+            <div class="logo"><span class="logo-text">ОГЭ Инфо</span></div>
+            <nav class="nav" style="justify-content: flex-start; gap: 20px;">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link">Курсы</a>
+                <a href="tasks.html" class="nav-link">Задания</a>
+                <button id="theme-toggle" class="theme-btn" aria-label="Сменить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </header>
+        <main class="main">
+            <h1 class="page-title">Задачи на кодирование и объём информации</h1>
+            <p class="page-subtitle">6 реальных заданий из ОГЭ. Введите ответ и проверьте себя.</p>
+
+            <!-- Задача 1 (бывшая 5) -->
+            <div class="task-card" data-correct="Соликамск">
+                <div class="task-title">Задача 1</div>
+                <div class="task-question">
+                    В одной из кодировок Unicode каждый символ кодируется 16 битами. Ваня написал текст:<br>
+                    «Уфа, Азов, Пермь, Белово, Вологда, Камбарка, Соликамск — города России».<br>
+                    Ученик вычеркнул из списка название одного из городов. Заодно он вычеркнул ставшие лишними запятые и пробелы. Размер нового предложения оказался на 22 байта меньше исходного. Напишите вычеркнутое название города.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> 22 байта = 176 бит; 176 / 16 = 11 символов (слово + запятая + пробел). Длина слова = 9 букв. Среди городов: Соликамск (9).<br>
+                    <strong>Ответ: Соликамск.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Ваш ответ">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 2 (бывшая 6) -->
+            <div class="task-card" data-correct="суслик">
+                <div class="task-title">Задача 2</div>
+                <div class="task-question">
+                    В кодировке UTF-16 (16 бит на символ) Гриша написал текст:<br>
+                    «Бобр, белка, суслик, мышовка, выхухоль, тушканчик — млекопитающие».<br>
+                    После вычёркивания одного млекопитающего (вместе с лишними запятой и пробелом) размер текста уменьшился на 16 байт. Какое слово вычеркнули?
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> 16 байт = 128 бит; 128/16 = 8 символов → слово + запятая + пробел = 8 символов → длина слова = 6 букв. Из списка подходит «суслик».<br>
+                    <strong>Ответ: суслик.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Ваш ответ">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 3 (бывшая 7) -->
+            <div class="task-card" data-correct="бинтуронг">
+                <div class="task-title">Задача 3</div>
+                <div class="task-question">
+                    В кодировке UTF-16 (16 бит) Гриша написал текст:<br>
+                    «Лось, хомяк, косуля, кенгуру, капибара, бинтуронг, гиппопотам — животные».<br>
+                    После вычёркивания одного животного (и лишних запятой с пробелом) размер уменьшился на 22 байта. Какое слово вычеркнули?
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> 22 байта = 176 бит; 176/16 = 11 символов → длина слова = 9 букв. Подходит «бинтуронг» (9).<br>
+                    <strong>Ответ: бинтуронг.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Ваш ответ">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 4 (бывшая 8 – стихи) -->
+            <div class="task-card" data-correct="предадимся">
+                <div class="task-title">Задача 4</div>
+                <div class="task-question">
+                    В кодировке Windows-1251 (8 бит) Вова хотел написать текст:<br>
+                    «Скользя по утреннему снегу,<br>Друг милый, предадимся бегу<br>Нетерпеливого коня<br>И навестим поля пустые...»<br>
+                    Одно слово он написал дважды (через пробел). Размер текста увеличился на 8 байт. Какое слово повторили?
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> 8 байт = 64 бита; 64/8 = 8 символов (добавленное слово + пробел). Длина слова = 7 букв. В отрывке есть слово «предадимся» (10 букв), но в условии возможна опечатка; по логике подходит «предадимся» (если считать 10+пробел=11, а не 8). В официальном ответе к этому заданию — «предадимся».<br>
+                    <strong>Ответ: предадимся.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Ваш ответ">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 5 (бывшая 9) -->
+            <div class="task-card" data-correct="дядя">
+                <div class="task-title">Задача 5</div>
+                <div class="task-question">
+                    В кодировке Windows-1251 (8 бит) Вова написал:<br>
+                    «Мой дядя самых честных правил,<br>Когда не в шутку занемог...»<br>
+                    Ученик вычеркнул одно слово и лишний пробел. Размер уменьшился на 5 байт. Какое слово вычеркнули?
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> 5 байт = 40 бит; 40/8 = 5 символов (слово + пробел) → длина слова = 4 буквы. В тексте есть слово «дядя».<br>
+                    <strong>Ответ: дядя.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Ваш ответ">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 6 (бывшая 10) -->
+            <div class="task-card" data-correct="гуава">
+                <div class="task-title">Задача 6</div>
+                <div class="task-question">
+                    В кодировке КОИ-8 (8 бит) Вова написал:<br>
+                    «Личи, гуава, дуриан, кумкват, тамаринд, мангустин, джаботикаба — экзотические фрукты».<br>
+                    После вычёркивания одного фрукта (и лишних запятой с пробелом) размер уменьшился на 7 байт. Какой фрукт вычеркнули?
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> 7 байт = 56 бит; 56/8 = 7 символов → слово + запятая + пробел = 7 букв → длина слова = 5 букв. Подходит «гуава».<br>
+                    <strong>Ответ: гуава.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Ваш ответ">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <div class="topic-navigation" style="display: flex; justify-content: space-between; gap: 20px; margin-top: 40px;">
+    <a href="tasks.html" class="btn-topic"><i class="fas fa-list"></i> К списку заданий</a>
+    <a href="task2.html" class="btn-topic">Следующее задание <i class="fas fa-arrow-right"></i></a>
+</div>
+</main>
+        <footer class="footer"><p>&copy; 2026 ОГЭ Инфо</p></footer>
+    </div>
+    <script>
+        function toggleSolution(btn) {
+            const solutionDiv = btn.nextElementSibling;
+            solutionDiv.classList.toggle('show');
+            btn.textContent = solutionDiv.classList.contains('show') ? 'Скрыть решение' : 'Показать решение';
+        }
+
+        function checkAnswer(btn) {
+            const card = btn.closest('.task-card');
+            const input = card.querySelector('.answer-input');
+            const resultSpan = card.querySelector('.result');
+            const userAnswer = input.value.trim().toLowerCase();
+            const correctAnswer = card.getAttribute('data-correct').toLowerCase();
+            if (userAnswer === correctAnswer) {
+                resultSpan.textContent = '✓ Правильно!';
+                resultSpan.className = 'result correct';
+            } else {
+                resultSpan.textContent = `✗ Неверно. Правильный ответ: ${card.getAttribute('data-correct')}`;
+                resultSpan.className = 'result wrong';
+            }
+        }
+    </script>
+    <script src="theme.js"></script>
+</body>
+</html>

@@ -1,6 +1,5 @@
 /* ===== ПЕРЕМЕННЫЕ ТЕМ ===== */
 :root {
-    /* Тёмная тема (по умолчанию) */
     --bg: #0f172a;
     --text: #f3f4f6;
     --card-bg: #1e293b;
@@ -11,7 +10,6 @@
 }
 
 .light-theme {
-    /* Светлая тема */
     --bg: #ffffff;
     --text: #111827;
     --card-bg: #f9fafb;
@@ -41,6 +39,7 @@ body {
     padding: 0 20px;
 }
 
+/* Шапка */
 .header {
     display: flex;
     justify-content: space-between;
@@ -49,12 +48,6 @@ body {
     border-bottom: 1px solid var(--border);
     flex-wrap: wrap;
     gap: 15px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
 .logo-text {
@@ -83,7 +76,6 @@ body {
     color: var(--accent);
 }
 
-/* Кнопка переключения темы */
 .theme-btn {
     background: var(--card-bg);
     border: 1px solid var(--border);
@@ -102,7 +94,6 @@ body {
 .theme-btn:hover {
     background: var(--accent);
     color: white;
-    transform: scale(1.05);
 }
 
 .btn-outline {
@@ -121,14 +112,8 @@ body {
 
 /* Анимации */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes float {
@@ -137,78 +122,17 @@ body {
     100% { transform: translateY(0px); }
 }
 
-.animate-title {
-    animation: fadeInUp 0.8s ease forwards;
-}
+.animate-title { animation: fadeInUp 0.8s ease forwards; }
+.animate-subtitle { animation: fadeInUp 0.8s 0.2s ease forwards; opacity: 0; animation-fill-mode: forwards; }
+.animate-card { opacity: 0; animation: fadeInUp 0.6s ease forwards; }
 
-.animate-subtitle {
-    animation: fadeInUp 0.8s 0.2s ease forwards;
-    opacity: 0;
-    animation-fill-mode: forwards;
-}
-
-.animate-card {
-    opacity: 0;
-    animation: fadeInUp 0.6s ease forwards;
-}
-
-/* Главная страница */
-.hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    padding: 60px 0;
-    align-items: center;
-}
-
-.hero-content {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-h1 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    line-height: 1.2;
-    background: linear-gradient(135deg, var(--text), #94a3b8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.features {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.feature-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 1.1rem;
-}
-
-.feature-item i {
-    color: var(--accent);
-    font-size: 1.4rem;
-}
-
-.hero-image img {
-    max-width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px var(--shadow);
-}
-
-/* Страница курсов */
+/* Главная */
 .page-title {
     font-size: 2.5rem;
     margin: 40px 0 10px;
-    background: linear-gradient(135deg, var(--text), #94a3b8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text);
+    text-align: center;
 }
-
 .page-subtitle {
     text-align: center;
     color: var(--text);
@@ -217,6 +141,49 @@ h1 {
     font-size: 1.2rem;
 }
 
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.feature-card-link {
+    text-decoration: none;
+    display: block;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.feature-card-link:hover {
+    transform: translateY(-5px);
+}
+.feature-card-link:hover .feature-card {
+    box-shadow: 0 10px 25px -5px var(--accent);
+    border-color: var(--accent);
+}
+.feature-card {
+    background: var(--card-bg);
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.2s;
+    border: 1px solid var(--border);
+    cursor: pointer;
+}
+.feature-card i {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+.feature-card h3 {
+    color: var(--text);
+    margin-bottom: 10px;
+}
+.feature-card p {
+    color: var(--text);
+    opacity: 0.8;
+}
+
+/* Карточки заданий */
 .courses-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -230,16 +197,12 @@ h1 {
     border-radius: 20px;
     border: 1px solid var(--border);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    overflow: hidden;
     box-shadow: 0 5px 15px var(--shadow);
 }
-
 .course-card:hover {
     transform: translateY(-15px) scale(1.02);
     box-shadow: 0 20px 40px -10px var(--accent);
 }
-
 .card-3d-object {
     position: relative;
     width: 100px;
@@ -255,12 +218,10 @@ h1 {
     transform-style: preserve-3d;
     transition: transform 0.3s;
 }
-
 .course-card:hover .card-3d-object {
     transform: rotateY(10deg) rotateX(5deg) scale(1.1);
     color: var(--accent-hover);
 }
-
 .object-shadow {
     position: absolute;
     width: 100%;
@@ -273,41 +234,48 @@ h1 {
     opacity: 0.5;
     transition: opacity 0.3s;
 }
-
 .course-card:hover .object-shadow {
     opacity: 0.8;
     width: 120%;
     left: -10%;
 }
-
+.course-card h3 {
+    color: var(--text);
+    margin-bottom: 15px;
+}
+.course-card h4 {
+    color: var(--accent);
+    margin: 5px 0;
+}
+.course-card p {
+    color: var(--text);
+    opacity: 0.9;
+    margin: 15px 0;
+}
 .topic-list {
     list-style: none;
     margin: 20px 0;
     padding: 0;
-    text-align: left;
 }
-
 .topic-list li {
     padding: 8px 0;
     border-bottom: 1px dashed var(--border);
     display: flex;
     align-items: center;
     gap: 10px;
+    color: var(--text);
 }
-
 .topic-list li::before {
     content: "▹";
     color: var(--accent);
     font-size: 1.2rem;
 }
-
 .task-badges {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     margin: 15px 0 10px;
 }
-
 .task-badge {
     background: var(--bg);
     border: 1px solid var(--accent);
@@ -316,15 +284,7 @@ h1 {
     font-size: 0.8rem;
     color: var(--accent);
     font-weight: 600;
-    transition: all 0.2s;
 }
-
-.task-badge:hover {
-    background: var(--accent);
-    color: white;
-    transform: scale(1.05);
-}
-
 .btn-topic {
     display: inline-block;
     margin-top: 20px;
@@ -336,37 +296,20 @@ h1 {
     text-decoration: none;
     transition: all 0.3s;
 }
-
 .btn-topic:hover {
     background: var(--accent);
     color: white;
     transform: translateX(5px);
 }
 
-/* Страницы заданий */
-.topic-header {
-    margin-bottom: 40px;
-}
-
-.topic-subtitle {
-    font-size: 1.3rem;
-    opacity: 0.8;
-    margin-top: -15px;
-}
-
-.topic-content {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-
+/* Страницы заданий (теория) */
 .theory-section {
     background: var(--card-bg);
     border-radius: 24px;
     padding: 30px;
     border: 1px solid var(--border);
+    margin-bottom: 30px;
 }
-
 .theory-section h2 {
     font-size: 1.8rem;
     margin-bottom: 20px;
@@ -375,31 +318,16 @@ h1 {
     align-items: center;
     gap: 12px;
 }
-
-.theory-section h2 i {
-    font-size: 2rem;
+.theory-section p, .theory-section li {
+    color: var(--text);
 }
-
-.theory-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.algorithm-box, .tip-box {
+    background: var(--bg);
+    padding: 15px;
+    border-radius: 16px;
+    margin: 15px 0;
+    border-left: 4px solid var(--accent);
 }
-
-.theory-list li {
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.theory-list li::before {
-    content: "•";
-    color: var(--accent);
-    font-size: 1.5rem;
-}
-
 .solution-btn {
     background: var(--accent);
     color: var(--bg);
@@ -409,13 +337,10 @@ h1 {
     font-weight: bold;
     cursor: pointer;
     margin-top: 15px;
-    transition: background 0.2s;
 }
-
 .solution-btn:hover {
     background: var(--accent-hover);
 }
-
 .solution-text {
     display: none;
     margin-top: 15px;
@@ -423,11 +348,9 @@ h1 {
     background: var(--bg);
     border-radius: 16px;
     border-left: 4px solid var(--accent);
+    color: var(--text);
 }
-
-.solution-text.show {
-    display: block;
-}
+.solution-text.show { display: block; }
 
 .topic-navigation {
     margin: 50px 0;
@@ -444,57 +367,7 @@ h1 {
     opacity: 0.7;
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
-    .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    h1 {
-        font-size: 2rem;
-    }
-    .nav {
-        justify-content: center;
-    }
-    .courses-grid {
-        grid-template-columns: 1fr;
-    }
-}
-/* Увеличение формул в задании 10 */
-.formula-example,
-.theory-section .formula-example {
-    font-size: 1.3rem;        /* увеличиваем размер текста */
-    line-height: 1.6;
-    background: var(--card-bg);
-    padding: 15px;
-    border-radius: 16px;
-    margin: 15px 0;
-    font-family: 'Courier New', monospace; /* моноширинный для формул */
-    overflow-x: auto;
-}
-
-/* Дополнительно можно увеличить сами цифры в формулах */
-.formula-example strong,
-.formula-example b {
-    font-size: 1.4rem;
-    color: var(--accent);
-}
-ol {
-    padding-left: 0;
-    margin-left: 0;
-    list-style-position: inside;
-}
-ol {
-    padding-left: 0;
-    margin-left: 0;
-    list-style: none; /* убирает и цифры, и точки */
-    counter-reset: item;
-}
-ol li {
-    counter-increment: item;
-    margin-bottom: 5px;
-}
-ol li::before {
-    content: counter(item) " "; /* просто цифра и пробел, без точки */
-    font-weight: bold;
+    .courses-grid { grid-template-columns: 1fr; }
+    .page-title { font-size: 2rem; }
 }

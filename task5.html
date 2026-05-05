@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задачи на исполнителей — ОГЭ Инфо</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .task-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        .task-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px var(--shadow);
+            border-color: var(--accent);
+        }
+        .task-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        .task-question {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: var(--text);
+            opacity: 0.9;
+        }
+        .solution-btn, .check-btn {
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            border-radius: 30px;
+            padding: 6px 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            margin-right: 12px;
+            margin-bottom: 10px;
+        }
+        .solution-btn:hover, .check-btn:hover {
+            background: var(--accent-hover);
+            transform: scale(1.02);
+        }
+        .solution-text {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: var(--bg);
+            border-radius: 20px;
+            border-left: 5px solid var(--accent);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text);
+        }
+        .solution-text.show {
+            display: block;
+        }
+        .answer-area {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+        .answer-input {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 8px 18px;
+            color: var(--text);
+            font-size: 0.95rem;
+            flex: 1;
+            min-width: 180px;
+        }
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .result {
+            font-weight: 600;
+            margin-left: 10px;
+            font-size: 0.9rem;
+        }
+        .result.correct {
+            color: #4ade80;
+        }
+        .result.wrong {
+            color: #f87171;
+        }
+        .mono {
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header stepik-header" style="justify-content: space-between;">
+            <div class="logo"><span class="logo-text">ОГЭ Инфо</span></div>
+            <nav class="nav" style="justify-content: flex-start; gap: 20px;">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link">Курсы</a>
+                <a href="tasks.html" class="nav-link">Задания</a>
+                <button id="theme-toggle" class="theme-btn" aria-label="Сменить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </header>
+        <main class="main">
+            <h1 class="page-title">Задачи на исполнителей (нахождение b)</h1>
+            <p class="page-subtitle">6 реальных заданий из ОГЭ. Найдите неизвестное число.</p>
+
+            <!-- Задача 1 (№10454) -->
+            <div class="task-card" data-correct="6">
+                <div class="task-title">Задача 1</div>
+                <div class="task-question">
+                    Исполнитель Омега: 1 = +3, 2 = ÷ b. Программа 11211 переводит число 30 в число 12. Найдите b.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> Выполняем команды: 30 → +3=33, +3=36, ÷b=36/b, +3=36/b+3, +3=36/b+6. Уравнение: 36/b+6=12 → 36/b=6 → b=6.<br>
+                    <strong>Ответ: 6.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Число b">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 2 (№10457) -->
+            <div class="task-card" data-correct="11">
+                <div class="task-title">Задача 2</div>
+                <div class="task-question">
+                    Омега: 1=+3, 2=÷b. Программа 11121 переводит 46 в 8. Найдите b.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> 46 → +3=49, +3=52, +3=55, ÷b=55/b, +3=55/b+3. Уравнение: 55/b+3=8 → 55/b=5 → b=11.<br>
+                    <strong>Ответ: 11.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Число b">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 3 (№10883) -->
+            <div class="task-card" data-correct="4">
+                <div class="task-title">Задача 3</div>
+                <div class="task-question">
+                    Альфа: 1=+4, 2=÷b. Программа 11121 переводит 76 в 26. Найдите b.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> 76 → +4=80, +4=84, +4=88, ÷b=88/b, +4=88/b+4. Уравнение: 88/b+4=26 → 88/b=22 → b=4.<br>
+                    <strong>Ответ: 4.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Число b">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 4 (№10388) -->
+            <div class="task-card" data-correct="6">
+                <div class="task-title">Задача 4</div>
+                <div class="task-question">
+                    Гамма: 1=+3, 2=×b. Программа 11121 переводит 3 в 75. Найдите b.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> 3 → +3=6, +3=9, +3=12, ×b=12b, +3=12b+3. Уравнение: 12b+3=75 → 12b=72 → b=6.<br>
+                    <strong>Ответ: 6.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Число b">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 5 (№10389) -->
+            <div class="task-card" data-correct="5">
+                <div class="task-title">Задача 5</div>
+                <div class="task-question">
+                    Омега: 1=+4, 2=×b. Программа 12111 переводит 9 в 77. Найдите b.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> 9 → +4=13, ×b=13b, +4=13b+4, +4=13b+8, +4=13b+12. Уравнение: 13b+12=77 → 13b=65 → b=5.<br>
+                    <strong>Ответ: 5.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Число b">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 6 (№10878) -->
+            <div class="task-card" data-correct="3">
+                <div class="task-title">Задача 6</div>
+                <div class="task-question">
+                    Омега: 1=+5, 2=×b. Программа 12111 переводит 6 в 48. Найдите b.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> 6 → +5=11, ×b=11b, +5=11b+5, +5=11b+10, +5=11b+15. Уравнение: 11b+15=48 → 11b=33 → b=3.<br>
+                    <strong>Ответ: 3.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Число b">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+           <div class="topic-navigation" style="display: flex; justify-content: space-between; gap: 20px; margin-top: 40px;">
+    <a href="task4.html" class="btn-topic"><i class="fas fa-arrow-left"></i> Предыдущее задание</a>
+    <a href="tasks.html" class="btn-topic"><i class="fas fa-list"></i> К списку заданий</a>
+    <a href="task6.html" class="btn-topic">Следующее задание <i class="fas fa-arrow-right"></i></a>
+</div>
+</main>
+        <footer class="footer"><p>&copy; 2026 ОГЭ Инфо</p></footer>
+    </div>
+    <script>
+        function toggleSolution(btn) {
+            const solutionDiv = btn.nextElementSibling;
+            solutionDiv.classList.toggle('show');
+            btn.textContent = solutionDiv.classList.contains('show') ? 'Скрыть решение' : 'Показать решение';
+        }
+
+        function checkAnswer(btn) {
+            const card = btn.closest('.task-card');
+            const input = card.querySelector('.answer-input');
+            const resultSpan = card.querySelector('.result');
+            const userAnswer = input.value.trim().toLowerCase();
+            const correctAnswer = card.getAttribute('data-correct').toLowerCase();
+            if (userAnswer === correctAnswer) {
+                resultSpan.textContent = '✓ Правильно!';
+                resultSpan.className = 'result correct';
+            } else {
+                resultSpan.textContent = `✗ Неверно. Правильный ответ: ${card.getAttribute('data-correct')}`;
+                resultSpan.className = 'result wrong';
+            }
+        }
+    </script>
+    <script src="theme.js"></script>
+</body>
+</html>

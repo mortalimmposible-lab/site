@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задания по декодированию — ОГЭ Инфо</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .task-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        .task-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px var(--shadow);
+            border-color: var(--accent);
+        }
+        .task-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        .task-question {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: var(--text);
+            opacity: 0.9;
+        }
+        .solution-btn, .check-btn {
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            border-radius: 30px;
+            padding: 6px 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            margin-right: 12px;
+            margin-bottom: 10px;
+        }
+        .solution-btn:hover, .check-btn:hover {
+            background: var(--accent-hover);
+            transform: scale(1.02);
+        }
+        .solution-text {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: var(--bg);
+            border-radius: 20px;
+            border-left: 5px solid var(--accent);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text);
+        }
+        .solution-text.show {
+            display: block;
+        }
+        .answer-area {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+        .answer-input {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 8px 18px;
+            color: var(--text);
+            font-size: 0.95rem;
+            flex: 1;
+            min-width: 180px;
+        }
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .result {
+            font-weight: 600;
+            margin-left: 10px;
+            font-size: 0.9rem;
+        }
+        .result.correct {
+            color: #4ade80;
+        }
+        .result.wrong {
+            color: #f87171;
+        }
+        .mono {
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header stepik-header" style="justify-content: space-between;">
+            <div class="logo"><span class="logo-text">ОГЭ Инфо</span></div>
+            <nav class="nav" style="justify-content: flex-start; gap: 20px;">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link">Курсы</a>
+                <a href="tasks.html" class="nav-link">Задания</a>
+                <button id="theme-toggle" class="theme-btn" aria-label="Сменить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </header>
+        <main class="main">
+            <h1 class="page-title">Задачи на декодирование и шифры</h1>
+            <p class="page-subtitle">6 реальных заданий из ОГЭ. Расшифруйте и проверьте себя.</p>
+
+            <!-- Задача 1 (№207) -->
+            <div class="task-card" data-correct="ПОЛЕТ">
+                <div class="task-title">Задача 1</div>
+                <div class="task-question">
+                    Фрагмент кодовой таблицы: A=+#, E=#+, Л=~, П=#, Т=⚠️, О=⚠️.<br>
+                    Расшифруйте сообщение: <span class="mono">#~#~#+#+~#</span> (буквы не повторяются).
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong>Сопоставляя символы их кодам, расшифруем сообщение:
+
+#~#~#++~#  =  ПОЛЕТ.<strong>Ответ: ПОЛЕТ.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Ваш ответ (буквы)">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 2 (№227) -->
+            <div class="task-card" data-correct="МАМГЮКА">
+                <div class="task-title">Задача 2</div>
+                <div class="task-question">
+                    Азбука Морзе: А=●—, Г=■—, М=—, К=—●, Ю=——.<br>
+                    Радиограмма: <span class="mono">-●—■—●■—●■—●■—●■—●■—●■—●■</span><br>
+                    Расшифруйте (разбиение потеряно).
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong>Первой буквой могут быть буквы М и Г, однако, при выборе буквы Г дальнейшая расшифровка невозможна. Комбинация «•–» соответствует букве А, «––»  — букве М, «––•»  — букве Г, «••––»  — букве Ю, «–•–»  — букве К, «•–»  — букве А.
+
+ 
+
+Итак, шифром закодировано сообщение МАМГЮКА.
+
+ 
+
+Ответ: МАМГЮКА.<strong>Ответ: МАМГЮКА.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Ваш ответ">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 3 (№247) -->
+            <div class="task-card" data-correct="ННКНЛКИ">
+                <div class="task-title">Задача 3</div>
+                <div class="task-question">
+                    Азбука Морзе: Н=●—, К=■—, И=●—, Л=■—, М=—.<br>
+                    Радиограмма: <span class="mono">-●—■—●■—●■—●■—●■—●■—●■—●■</span><br>
+                    Расшифруйте.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong>Первой буквой могут быть буквы Н и К, однако, при выборе буквы К дальнейшая расшифровка невозможна. Аналогично для выбора второй буквы. Комбинация «–•–» соответствует букве К, «–•»  — букве Н, «•–••»  — букве Л, «••»  — букве И.
+
+ 
+
+Итак, шифром закодировано сообщение ННКНЛКИ.
+
+ 
+
+Ответ: ННКНЛКИ.<strong>Ответ: ННКНЛКИ.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Ваш ответ">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 4 (№628) -->
+            <div class="task-card" data-correct="БСИС">
+                <div class="task-title">Задача 4</div>
+                <div class="task-question">
+                    Коды: Б=110, И=01, С=100, Е=010, Р=… (в условии неполно).<br>
+                    Сообщение: <span class="mono">11010001100</span>. Расшифруйте.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> Сопоставляя символы их кодам, расшифруем сообщение:
+
+11010001100  =  БСИС.<strong>Ответ: БСИС.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Ваш ответ">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 5 (№648) -->
+            <div class="task-card" data-correct="ТЕМА">
+                <div class="task-title">Задача 5</div>
+                <div class="task-question">
+                    Коды: М=01, Е=100, Т=110, Л=101, А=…<br>
+                    Сообщение: <span class="mono">1101000110</span>. Расшифруйте.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong>Сопоставляя символы их кодам, расшифруем сообщение:
+
+1101000110  =  ТЕМА.<strong>Ответ: ТЕМА.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Ваш ответ">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 6 (№688) -->
+            <div class="task-card" data-correct="5">
+                <div class="task-title">Задача 6</div>
+                <div class="task-question">
+                    Коды: А=10, Б=101, В=12, Г=102, Д=122, Е=22, Ж=…<br>
+                    Сообщение: <span class="mono">101212210102</span>. Сколько букв в сообщении?
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> Сопоставляя символы их кодам, расшифруем сообщение:
+
+101212210102  =  АВДАГ.
+
+Следовательно, ответ 5.<strong>Ответ: 5.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Число">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+           <div class="topic-navigation" style="display: flex; justify-content: space-between; gap: 20px; margin-top: 40px;">
+    <a href="task1.html" class="btn-topic"><i class="fas fa-arrow-left"></i> Предыдущее задание</a>
+    <a href="tasks.html" class="btn-topic"><i class="fas fa-list"></i> К списку заданий</a>
+    <a href="task3.html" class="btn-topic">Следующее задание <i class="fas fa-arrow-right"></i></a>
+</div>
+</main>
+        <footer class="footer"><p>&copy; 2026 ОГЭ Инфо</p></footer>
+    </div>
+    <script>
+        function toggleSolution(btn) {
+            const solutionDiv = btn.nextElementSibling;
+            solutionDiv.classList.toggle('show');
+            btn.textContent = solutionDiv.classList.contains('show') ? 'Скрыть решение' : 'Показать решение';
+        }
+
+        function checkAnswer(btn) {
+            const card = btn.closest('.task-card');
+            const input = card.querySelector('.answer-input');
+            const resultSpan = card.querySelector('.result');
+            const userAnswer = input.value.trim().toLowerCase();
+            const correctAnswer = card.getAttribute('data-correct').toLowerCase();
+            if (userAnswer === correctAnswer) {
+                resultSpan.textContent = '✓ Правильно!';
+                resultSpan.className = 'result correct';
+            } else {
+                resultSpan.textContent = `✗ Неверно. Правильный ответ: ${card.getAttribute('data-correct')}`;
+                resultSpan.className = 'result wrong';
+            }
+        }
+    </script>
+    <script src="theme.js"></script>
+</body>
+</html>

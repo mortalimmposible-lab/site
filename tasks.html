@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задания ОГЭ — ОГЭ Инфо</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header stepik-header" style="justify-content: space-between;">
+            <div class="logo"><span class="logo-text">ОГЭ Инфо</span></div>
+            <nav class="nav" style="justify-content: flex-start; gap: 20px;">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link">Курсы</a>
+                <a href="tasks.html" class="nav-link">Задания</a>
+                <button id="theme-toggle" class="theme-btn" aria-label="Сменить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </header>
+        <main class="main">
+            <h1 class="page-title animate-title">Тренировочные задания ОГЭ по информатике</h1>
+            <p class="page-subtitle animate-subtitle">10 типовых задач из первой части экзамена</p>
+            <div class="courses-grid" id="tasks-grid">
+                <!-- 10 карточек, ссылающихся на task1.html ... task10.html -->
+                <script>
+                    const tasksList = [
+                        { num: 1, title: "Количественные параметры", desc: "Расчёт объёма информации, перевод единиц." },
+                        { num: 2, title: "Логические выражения", desc: "Анализ истинности высказываний с отрицанием." },
+                        { num: 3, title: "Графы", desc: "Поиск кратчайшего пути между пунктами." },
+                        { num: 4, title: "Файловая система", desc: "Операции с каталогами, определение пути." },
+                        { num: 5, title: "Электронные таблицы", desc: "Формулы, диаграммы." },
+                        { num: 6, title: "Исполнитель Чертежник", desc: "Перемещение на координатной плоскости." },
+                        { num: 7, title: "Декодирование", desc: "Расшифровка сообщений по кодам." },
+                        { num: 8, title: "Линейный алгоритм", desc: "Вычисление значения переменных." },
+                        { num: 9, title: "Циклы в Python", desc: "Вычисление суммы в цикле." },
+                        { num: 10, title: "Работа с массивом", desc: "Подсчёт элементов по условию." }
+                    ];
+                    const container = document.querySelector('.courses-grid');
+                    if (container) {
+                        container.innerHTML = tasksList.map((task, idx) => `
+                            <div class="course-card animate-card" style="animation-delay: ${idx * 0.05}s">
+                                <div class="card-3d-object">
+                                    <i class="fas fa-tasks"></i>
+                                    <div class="object-shadow"></div>
+                                </div>
+                                <h3>Задание ${task.num}</h3>
+                                <h4 style="color: var(--accent); margin: 5px 0;">${task.title}</h4>
+                                <p style="color: var(--text); opacity: 0.9; margin: 15px 0;">${task.desc}</p>
+                                <div class="task-badges">
+                                    <span class="task-badge">ОГЭ</span>
+                                    <span class="task-badge">Практика</span>
+                                </div>
+                                <a href="task${task.num}.html" class="btn-topic">Перейти →</a>
+                            </div>
+                        `).join('');
+                    }
+                </script>
+            </div>
+        </main>
+        <footer class="footer">
+            <p>&copy; 2026 ОГЭ Инфо. Задания из открытого банка ФИПИ</p>
+        </footer>
+    </div>
+    <script src="theme.js"></script>
+</body>
+</html>

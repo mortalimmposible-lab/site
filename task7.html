@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задачи на адресацию — ОГЭ Инфо</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .task-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        .task-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px var(--shadow);
+            border-color: var(--accent);
+        }
+        .task-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        .task-question {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: var(--text);
+            opacity: 0.9;
+        }
+        .solution-btn, .check-btn {
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            border-radius: 30px;
+            padding: 6px 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            margin-right: 12px;
+            margin-bottom: 10px;
+        }
+        .solution-btn:hover, .check-btn:hover {
+            background: var(--accent-hover);
+            transform: scale(1.02);
+        }
+        .solution-text {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: var(--bg);
+            border-radius: 20px;
+            border-left: 5px solid var(--accent);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text);
+        }
+        .solution-text.show {
+            display: block;
+        }
+        .answer-area {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+        .answer-input {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 8px 18px;
+            color: var(--text);
+            font-size: 0.95rem;
+            flex: 1;
+            min-width: 180px;
+        }
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .result {
+            font-weight: 600;
+            margin-left: 10px;
+            font-size: 0.9rem;
+        }
+        .result.correct {
+            color: #4ade80;
+        }
+        .result.wrong {
+            color: #f87171;
+        }
+        .mono {
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header stepik-header" style="justify-content: space-between;">
+            <div class="logo"><span class="logo-text">ОГЭ Инфо</span></div>
+            <nav class="nav" style="justify-content: flex-start; gap: 20px;">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link">Курсы</a>
+                <a href="tasks.html" class="nav-link">Задания</a>
+                <button id="theme-toggle" class="theme-btn" aria-label="Сменить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </header>
+        <main class="main">
+            <h1 class="page-title">Задачи на адресацию (URL, email, IP)</h1>
+            <p class="page-subtitle">6 реальных заданий из ОГЭ. Восстановите последовательность.</p>
+
+            <!-- Задача 1: URL tiger.doc -->
+            <div class="task-card" data-correct="ЖГБЕВАД">
+                <div class="task-title">Задача 1</div>
+                <div class="task-question">
+                    Доступ к файлу <strong>tiger.doc</strong>, сервер <strong>zoo.org</strong>, протокол <strong>http</strong>.<br>
+                    Фрагменты: А) .doc ; Б) zoo ; В) // ; Г) :// ; Д) tiger ; Е) .org ; Ж) http.<br>
+                    Запишите последовательность букв (порядок фрагментов).
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> Адрес: протокол + :// + сервер + / + файл. http (Ж) + :// (Г) + zoo (Б) + .org (Е) + / (В) + tiger (Д) + .doc (А). Получаем ЖГБЕВАД.<br>
+                    <strong>Ответ: ЖГБЕВАД.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Буквы">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 2: URL start.exe -->
+            <div class="task-card" data-correct="ГЖДЕБАВ">
+                <div class="task-title">Задача 2</div>
+                <div class="task-question">
+                    Доступ к файлу <strong>start.exe</strong>, сервер <strong>game.com</strong>, протокол <strong>http</strong>.<br>
+                    Фрагменты: А) start ; Б) / ; В) .exe ; Г) http ; Д) game ; Е) .com ; Ж) :// .<br>
+                    Запишите последовательность букв.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> http (Г) + :// (Ж) + game (Д) + .com (Е) + / (Б) + start (А) + .exe (В). → ГЖДЕБАВ.<br>
+                    <strong>Ответ: ГЖДЕБАВ.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Буквы">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 3: email wait_for_mail@GorodN.ru -->
+            <div class="task-card" data-correct="ДВБЕАГ">
+                <div class="task-title">Задача 3</div>
+                <div class="task-question">
+                    Почтовый ящик <strong>wait_for_mail</strong> на сервере <strong>GorodN.ru</strong>.<br>
+                    Фрагменты: А) GorodN ; Б) mail ; В) for_ ; Г) .ru ; Д) wait_ ; Е) @ .<br>
+                    Последовательность букв для адреса.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> Адрес: имя_ящика + @ + сервер. wait_ (Д) + for_ (В) + mail (Б) → wait_for_mail → + @ (Е) + GorodN (А) + .ru (Г) = ДВБЕАГ.<br>
+                    <strong>Ответ: ДВБЕАГ.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Буквы">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 4: email teacher@shkola1.mos.ru -->
+            <div class="task-card" data-correct="513462">
+                <div class="task-title">Задача 4</div>
+                <div class="task-question">
+                    Ящик <strong>teacher</strong> на сервере <strong>shkola1.mos.ru</strong>. Фрагменты: 1) @ ; 2) .ru ; 3) shkola1 ; 4) . ; 5) teacher ; 6) mos.<br>
+                    Последовательность цифр.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> teacher (5) + @ (1) + shkola1 (3) + . (4) + mos (6) + .ru (2) → 5 1 3 4 6 2. Напомним, как формируется почтовый адрес в сети Интернет. Сначала указывается имя почтового ящика, потом «@», потом сервер, на котором находится почтовый ящик. Таким образом, искомый адрес будет следующим: teacher@shkola1.mos.ru.
+
+ 
+
+Ответ: 513462.<br>
+                    <strong>Ответ: 513462.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Цифры">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 5: IP-адрес из фрагментов 2.12, 22, .30, 5.121 -->
+            <div class="task-card" data-correct="БАГВ"> <!-- предположительно -->
+                <div class="task-title">Задача 5</div>
+                <div class="task-question">
+                    Фрагменты IP-адреса: А) 2.12 ; Б) 22 ; В) .30 ; Г) 5.121 .<br>
+                    Восстановите IP-адрес (например, 5.121...). Последовательность букв.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> IP-адрес представляет собой четыре разделенных точками числа, каждое из которых не больше 255.
+
+Под буквой В указано «.30». Так как числа в IP-адресе не могут быть больше 255, нельзя добавить в конце этого числа еще один разряд. Следовательно, этот фрагмент  — последний.
+
+Рассмотрим фрагмент под буквой Б. Так как числа в IP-адресе не могут быть больше 255, фрагмент Б должен быть на первом месте.
+
+В конце фрагмента Г  — число 121, отделенное точкой. Так как в IP-адресе не может быть числа, большего 255, то за фрагментом Г должен следовать фрагмент, начинающийся с точки. Значит, фрагмент Г идет перед фрагментом В.
+
+Следовательно, ответ БАГВ.
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Буквы">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 6: IP-адрес из фрагментов 17, .44, 4.144, 9.13 -->
+            <div class="task-card" data-correct="АГВБ"> <!-- пример -->
+                <div class="task-title">Задача 6</div>
+                <div class="task-question">
+                    Фрагменты: А) 17 ; Б) .44 ; В) 4.144 ; Г) 9.13 .<br>
+                    Восстановите IP-адрес. Порядок букв.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong>IP-адрес представляет собой четыре разделенных точками числа, каждое из которых не больше 255.
+
+Под буквой Б указано «.44». Так как числа в IP-адресе не могут быть больше 255, нельзя добавить в конце этого числа еще один разряд. Следовательно, этот фрагмент  — последний.
+
+В конце фрагмента В  — число 144, отделенное точкой. Так как в IP-адресе не может быть числа, большего 255, то за фрагментом В должен следовать фрагмент, начинающийся с точки. Значит, фрагмент В идет перед фрагментом Б.
+
+Фрагмент под буквой Г не может быть первым, поскольку в таком случае за ним вынужден стоять фрагмент А, а в IP-адресе не может быть числа, большего 255. Следовательно, ответ АГВБ.</div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Буквы">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <div class="topic-navigation" style="display: flex; justify-content: space-between; gap: 20px; margin-top: 40px;">
+    <a href="task6.html" class="btn-topic"><i class="fas fa-arrow-left"></i> Предыдущее задание</a>
+    <a href="tasks.html" class="btn-topic"><i class="fas fa-list"></i> К списку заданий</a>
+    <a href="task8.html" class="btn-topic">Следующее задание <i class="fas fa-arrow-right"></i></a>
+</div>
+</main>
+        <footer class="footer"><p>&copy; 2026 ОГЭ Инфо</p></footer>
+    </div>
+    <script>
+        function toggleSolution(btn) {
+            const solutionDiv = btn.nextElementSibling;
+            solutionDiv.classList.toggle('show');
+            btn.textContent = solutionDiv.classList.contains('show') ? 'Скрыть решение' : 'Показать решение';
+        }
+
+        function checkAnswer(btn) {
+            const card = btn.closest('.task-card');
+            const input = card.querySelector('.answer-input');
+            const resultSpan = card.querySelector('.result');
+            const userAnswer = input.value.trim().toUpperCase();
+            const correctAnswer = card.getAttribute('data-correct').toUpperCase();
+            if (userAnswer === correctAnswer) {
+                resultSpan.textContent = '✓ Правильно!';
+                resultSpan.className = 'result correct';
+            } else {
+                resultSpan.textContent = `✗ Неверно. Правильный ответ: ${correctAnswer}`;
+                resultSpan.className = 'result wrong';
+            }
+        }
+    </script>
+    <script src="theme.js"></script>
+</body>
+</html>

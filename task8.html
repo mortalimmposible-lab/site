@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задачи на поисковые запросы — ОГЭ Инфо</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .task-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        .task-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px var(--shadow);
+            border-color: var(--accent);
+        }
+        .task-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        .task-question {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: var(--text);
+            opacity: 0.9;
+            white-space: pre-wrap;
+        }
+        .solution-btn, .check-btn {
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            border-radius: 30px;
+            padding: 6px 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            margin-right: 12px;
+            margin-bottom: 10px;
+        }
+        .solution-btn:hover, .check-btn:hover {
+            background: var(--accent-hover);
+            transform: scale(1.02);
+        }
+        .solution-text {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: var(--bg);
+            border-radius: 20px;
+            border-left: 5px solid var(--accent);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text);
+        }
+        .solution-text.show {
+            display: block;
+        }
+        .answer-area {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+        .answer-input {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 8px 18px;
+            color: var(--text);
+            font-size: 0.95rem;
+            flex: 1;
+            min-width: 180px;
+        }
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .result {
+            font-weight: 600;
+            margin-left: 10px;
+            font-size: 0.9rem;
+        }
+        .result.correct {
+            color: #4ade80;
+        }
+        .result.wrong {
+            color: #f87171;
+        }
+        table {
+            margin: 10px 0;
+            border-collapse: collapse;
+        }
+        td, th {
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header stepik-header" style="justify-content: space-between;">
+            <div class="logo"><span class="logo-text">ОГЭ Инфо</span></div>
+            <nav class="nav" style="justify-content: flex-start; gap: 20px;">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link">Курсы</a>
+                <a href="tasks.html" class="nav-link">Задания</a>
+                <button id="theme-toggle" class="theme-btn" aria-label="Сменить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </header>
+        <main class="main">
+            <h1 class="page-title">Задачи на поисковые запросы</h1>
+            <p class="page-subtitle">Используйте формулу включений-исключений: |A ∪ B| = |A| + |B| – |A ∩ B|.</p>
+
+            <!-- Задача 1: Швеция | Финляндия -->
+            <div class="task-card" data-correct="5400">
+                <div class="task-title">Задача 1</div>
+                <div class="task-question">
+                    Таблица:
+                    <table>
+                        <tr><th>Запрос</th><th>Найдено (тыс.)</th></tr>
+                        <tr><td>Швеция</td><td>3200</td></tr>
+                        <tr><td>Финляндия</td><td>2300</td></tr>
+                        <tr><td>Швеция & Финляндия</td><td>100</td></tr>
+                    </table>
+                    Найдите количество страниц по запросу <strong>Швеция | Финляндия</strong>.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> |A ∪ B| = |A| + |B| – |A ∩ B| = 3200 + 2300 – 100 = 5400.<br>
+                    <strong>Ответ: 5400.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Число">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 2: Пушкин & Лермонтов -->
+            <div class="task-card" data-correct="1000">
+                <div class="task-title">Задача 2</div>
+                <div class="task-question">
+                    Таблица:
+                    <table>
+                        <tr><th>Запрос</th><th>Найдено (тыс.)</th></tr>
+                        <tr><td>Пушкин</td><td>3500</td></tr>
+                        <tr><td>Лермонтов</td><td>2000</td></tr>
+                        <tr><td>Пушкин | Лермонтов</td><td>4500</td></tr>
+                    </table>
+                    Найдите <strong>Пушкин & Лермонтов</strong>.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> |A ∩ B| = |A| + |B| – |A ∪ B| = 3500 + 2000 – 4500 = 1000.<br>
+                    <strong>Ответ: 1000.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Число">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 3: Корвет (из Линкор) -->
+            <div class="task-card" data-correct="2520">
+                <div class="task-title">Задача 3</div>
+                <div class="task-question">
+                    Таблица:
+                    <table>
+                        <tr><th>Запрос</th><th>Найдено (тыс.)</th></tr>
+                        <tr><td>Линкор | Корвет</td><td>3320</td></tr>
+                        <tr><td>Линкор & Корвет</td><td>1300</td></tr>
+                        <tr><td>Линкор</td><td>2100</td></tr>
+                    </table>
+                    Найдите <strong>Корвет</strong>.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> |Линкор ∪ Корвет| = |Линкор| + |Корвет| – |Линкор ∩ Корвет|.<br>
+                    3320 = 2100 + |Корвет| – 1300 → 3320 = 800 + |Корвет| → |Корвет| = 2520.<br>
+                    <strong>Ответ: 2520.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Число">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 4: Пушкин (из Лермонтов) -->
+            <div class="task-card" data-correct="3400">
+                <div class="task-title">Задача 4</div>
+                <div class="task-question">
+                    Таблица:
+                    <table>
+                        <tr><th>Запрос</th><th>Найдено (тыс.)</th></tr>
+                        <tr><td>Пушкин | Лермонтов</td><td>5200</td></tr>
+                        <tr><td>Лермонтов</td><td>2100</td></tr>
+                        <tr><td>Пушкин & Лермонтов</td><td>300</td></tr>
+                    </table>
+                    Найдите <strong>Пушкин</strong>.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> |Пушкин ∪ Лермонтов| = |Пушкин| + |Лермонтов| – |Пушкин ∩ Лермонтов|.<br>
+                    5200 = |Пушкин| + 2100 – 300 → 5200 = |Пушкин| + 1800 → |Пушкин| = 3400.<br>
+                    <strong>Ответ: 3400.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Число">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 5: Динамио & (Зенит | Спартак) -->
+            <div class="task-card" data-correct="540">
+                <div class="task-title">Задача 5</div>
+                <div class="task-question">
+                    Таблица:
+                    <table>
+                        <tr><th>Запрос</th><th>Найдено (тыс.)</th></tr>
+                        <tr><td>Динамио & Зенит & Спартак</td><td>150</td></tr>
+                        <tr><td>Динамио & Спартак</td><td>380</td></tr>
+                        <tr><td>Динамио & Зенит</td><td>310</td></tr>
+                    </table>
+                    Найдите <strong>Динамио & (Зенит | Спартак)</strong>.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> |Д & (З ∪ С)| = |Д & З| + |Д & С| – |Д & З & С| = 310 + 380 – 150 = 540.<br>
+                    <strong>Ответ: 540.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Число">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <!-- Задача 6: Бюффон & Русско & Вольтер -->
+            <div class="task-card" data-correct="80">
+                <div class="task-title">Задача 6</div>
+                <div class="task-question">
+                    Таблица:
+                    <table>
+                        <tr><th>Запрос</th><th>Найдено (тыс.)</th></tr>
+                        <tr><td>Бюффон & Вольтер</td><td>150</td></tr>
+                        <tr><td>Бюффон & (Русско | Вольтер)</td><td>380</td></tr>
+                        <tr><td>Бюффон & Русско</td><td>310</td></tr>
+                    </table>
+                    Найдите <strong>Бюффон & Русско & Вольтер</strong>.
+                </div>
+                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                <div class="solution-text">
+                    <strong>Решение:</strong> |Б & (Р ∪ В)| = |Б & Р| + |Б & В| – |Б & Р & В|.<br>
+                    380 = 310 + 150 – X → 380 = 460 – X → X = 80.<br>
+                    <strong>Ответ: 80.</strong>
+                </div>
+                <div class="answer-area">
+                    <input type="text" class="answer-input" placeholder="Число">
+                    <button class="check-btn" onclick="checkAnswer(this)">Проверить</button>
+                    <span class="result"></span>
+                </div>
+            </div>
+
+            <div class="topic-navigation" style="display: flex; justify-content: space-between; gap: 20px; margin-top: 40px;">
+    <a href="task7.html" class="btn-topic"><i class="fas fa-arrow-left"></i> Предыдущее задание</a>
+    <a href="tasks.html" class="btn-topic"><i class="fas fa-list"></i> К списку заданий</a>
+    <a href="task9.html" class="btn-topic">Следующее задание <i class="fas fa-arrow-right"></i></a>
+</div>
+</main>
+        <footer class="footer"><p>&copy; 2026 ОГЭ Инфо</p></footer>
+    </div>
+    <script>
+        function toggleSolution(btn) {
+            const solutionDiv = btn.nextElementSibling;
+            solutionDiv.classList.toggle('show');
+            btn.textContent = solutionDiv.classList.contains('show') ? 'Скрыть решение' : 'Показать решение';
+        }
+
+        function checkAnswer(btn) {
+            const card = btn.closest('.task-card');
+            const input = card.querySelector('.answer-input');
+            const resultSpan = card.querySelector('.result');
+            const userAnswer = input.value.trim();
+            const correctAnswer = card.getAttribute('data-correct');
+            if (userAnswer === correctAnswer) {
+                resultSpan.textContent = '✓ Правильно!';
+                resultSpan.className = 'result correct';
+            } else {
+                resultSpan.textContent = `✗ Неверно. Правильный ответ: ${correctAnswer}`;
+                resultSpan.className = 'result wrong';
+            }
+        }
+    </script>
+    <script src="theme.js"></script>
+</body>
+</html>
