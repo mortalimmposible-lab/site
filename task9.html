@@ -118,12 +118,35 @@
             <!-- Задача 1 (Тип 9 № 18248) -->
             <div class="task-card" data-correct="19">
                 <div class="task-title">Задача 1</div>
+                <div class="task-image">
+			<img src="1задание.jpg" alt="Схема дорог к задаче 1">
+		</div>
                 <div class="task-question">
                     На рисунке — схема дорог, связывающих города А, Б, В, Г, Д, Е, Ж, З, И, К и Л. По каждой дороге можно двигаться только в одном направлении, указанном стрелкой. Сколько существует различных путей из города А в город Л?
                 </div>
                 <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
                 <div class="solution-text">
-                    <strong>Решение:</strong> Последовательно рассчитываем количество путей: А=1, Б=А=1, В=А+Б=2, Д=А=1, Г=А+Д=2, Е=Б+В=3, Ж=Г+Д=3, З=В+Г+Е+Ж=10, И=Е=3, К=Ж=3, Л=Ж+З+И+К=19.<br>
+                    <strong>Решение:</strong>А = 1;
+
+Б = А = 1;
+
+В = А + Б = 1 + 1 = 2;
+
+Д = А = 1;
+
+Г = А + Д = 1 + 1 = 2;
+
+Е = Б + В = 1 + 2 = 3;
+
+Ж = Г + Д = 2 + 1 = 3;
+
+З = В + Г + Е + Ж = 2 + 2 + 3 + 3 = 10;
+
+И = Е = 3;
+
+К = Ж = 3;
+
+Л = Ж + З + И + К = 3 + 10 + 3 + 3 = 19. <br>
                     <strong>Ответ: 19.</strong>
                 </div>
                 <div class="answer-area">
@@ -134,15 +157,38 @@
             </div>
 
             <!-- Задача 2 (Тип 9 № 18263) -->
-            <div class="task-card" data-correct="6">
+            <div class="task-card" data-correct="26">
                 <div class="task-title">Задача 2</div>
+		<div class="task-image">
+                <img src="2задание.jpg" alt="Схема дорог к задаче 2">
+                </div>
                 <div class="task-question">
                     На рисунке — схема дорог, связывающих города А, Б, В, Г, Д, Е, Ж, З, И, К и Л. По каждой дороге можно двигаться только в одном направлении, указанном стрелкой. Сколько существует различных путей из города А в город Л?
                 </div>
                 <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
                 <div class="solution-text">
-                    <strong>Решение:</strong> Количество путей равно 6.<br>
-                    <strong>Ответ: 6.</strong>
+                    <strong>Решение:</strong> А = 1;
+
+Б = А = 1;
+
+В = А + Б = 1 + 1 = 2;
+
+Д = А = 1;
+
+Г = А + В = 1 + 2 = 3;
+
+Е = Б + В = 1 + 2 = 3;
+
+Ж = Г + Д = 3 + 1 = 4;
+
+З = В + Г + Е + Ж = 2 + 3 + 3 + 4 = 12;
+
+И = Е = 3;
+
+К = Ж = 4;
+
+Л = Е + Ж + З + И + К = 3 + 4 + 12 + 3 + 4 = 26. Количество путей равно 26.<br>
+                    <strong>Ответ: 26.</strong>
                 </div>
                 <div class="answer-area">
                     <input type="text" class="answer-input" placeholder="Число">
@@ -152,15 +198,32 @@
             </div>
 
             <!-- Задача 3 (Тип 9 № 18278) -->
-            <div class="task-card" data-correct="8">
+            <div class="task-card" data-correct="14">
                 <div class="task-title">Задача 3</div>
+		<div class="task-image">
+                <img src="3задание.jpg" alt="Схема дорог к задаче 3">
+                </div>
                 <div class="task-question">
                     На рисунке — схема дорог, связывающих города А, B, C, D, E, G, H, F. По каждой дороге можно двигаться только в одном направлении, указанном стрелкой. Сколько существует различных путей из города A в город D?
                 </div>
                 <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
                 <div class="solution-text">
-                    <strong>Решение:</strong> Количество путей равно 8.<br>
-                    <strong>Ответ: 8.</strong>
+                    <strong>Решение:</strong> A = 1;
+
+B = A = 1;
+
+G = А = 1;
+
+E = A + B + G = 1 + 1 + 1 = 3;
+
+C = B + E = 1 + 3 = 4;
+
+H = G + E = 1 + 3 = 4;
+
+F = E + H = 3 + 4 = 7;
+
+D = E + C + F = 3 + 4 + 7 = 14. Количество путей равно 14.<br>
+                    <strong>Ответ: 14.</strong>
                 </div>
                 <div class="answer-area">
                     <input type="text" class="answer-input" placeholder="Число">
@@ -172,12 +235,31 @@
             <!-- Задача 4 (Тип 9 № 10249) -->
             <div class="task-card" data-correct="9">
                 <div class="task-title">Задача 4</div>
+		<div class="task-image">
+                <img src="4задание.jpg" alt="Схема дорог к задаче 4">
+                </div>
                 <div class="task-question">
                     На рисунке — схема дорог, связывающих города А, Б, В, Г, Д, Е, Ж, И, К. По каждой дороге можно двигаться только в одном направлении, указанном стрелкой. Сколько существует различных путей из города А в город К, проходящих через город Д?
                 </div>
                 <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
                 <div class="solution-text">
-                    <strong>Решение:</strong> Количество путей из А в Д (2) умножить на количество путей из Д в К (4) → 2*4=8? По данным источника ответ 9. Верный ответ 9.<br>
+                    <strong>Решение:</strong>А = 1.
+
+Б = А = 1.
+
+В = А + Б = 2.
+
+Г = А + В = 3.
+
+Д = В + Б = 3.
+
+Е = Д = 3 (В и Г не учитываем, поскольку путь должен проходить через город Д).
+
+Ж = Д + Е = 6.
+
+И = Е = 3.
+
+К = Ж + И = 9. Верный ответ 9.<br>
                     <strong>Ответ: 9.</strong>
                 </div>
                 <div class="answer-area">
@@ -190,12 +272,29 @@
             <!-- Задача 5 (Тип 9 № 10252) -->
             <div class="task-card" data-correct="14">
                 <div class="task-title">Задача 5</div>
+		<div class="task-image">
+                <img src="5задание.jpg" alt="Схема дорог к задаче 5">
+                </div>
                 <div class="task-question">
                     На рисунке — схема дорог, связывающих города А, Б, В, Г, Д, Е, Ж, З, И. По каждой дороге можно двигаться только в одном направлении, указанном стрелкой. Сколько существует различных путей из города А в город И, проходящих через город Г?
                 </div>
                 <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
                 <div class="solution-text">
-                    <strong>Решение:</strong> Количество путей из А в Г = 2. Количество путей из Г в И = 7. Общее количество путей = 2 * 7 = 14.<br>
+                    <strong>Решение:</strong> А = 1.
+
+Д = А = 1.
+
+Г = А + Д = 2.
+
+В = Г = 2. (А и Б не учитываем, поскольку путь должен проходить через Г)
+
+Е = В = 2. (Б не учитываем, поскольку путь должен проходить через Г)
+
+З = В + Г = 4. (Д не учитываем, поскольку путь должен проходить через Г)
+
+Ж = В + Е + З = 8.
+
+И = Е + Ж + З = 14.<br>
                     <strong>Ответ: 14.</strong>
                 </div>
                 <div class="answer-area">
@@ -206,15 +305,34 @@
             </div>
 
             <!-- Задача 6 (Тип 9 № 10253) -->
-            <div class="task-card" data-correct="9">
+            <div class="task-card" data-correct="17">
                 <div class="task-title">Задача 6</div>
+		<div class="task-image">
+                <img src="6задание.jpg" alt="Схема дорог к задаче 6">
+                </div>
                 <div class="task-question">
                     На рисунке — схема дорог, связывающих города А, Б, В, Г, Д, Е, Ж, З, И. По каждой дороге можно двигаться только в одном направлении, указанном стрелкой. Сколько существует различных путей из города А в город И, проходящих через город Ж?
                 </div>
                 <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
                 <div class="solution-text">
-                    <strong>Решение:</strong> Количество путей равно 9.<br>
-                    <strong>Ответ: 9.</strong>
+                    <strong>Решение:</strong> А = 1
+
+Д = А = 1
+
+Г = А + Д = 1 + 1 = 2
+
+В = А + Г = 1 + 2 = 3
+
+Б = А + В = 1 + 3 = 4
+
+Е = Б = 4
+
+З = Д + Г + В = 1 + 2 + 3 = 6
+
+Ж = Е + Б + В + З = 4 + 4 + 3 + 6 = 17
+
+И = Ж = 17 (учитываем только город, через который должен проходить путь)  Количество путей равно 17.<br>
+                    <strong>Ответ: 17.</strong>
                 </div>
                 <div class="answer-area">
                     <input type="text" class="answer-input" placeholder="Число">

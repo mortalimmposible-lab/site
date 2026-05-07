@@ -367,7 +367,13 @@ body {
     opacity: 0.7;
 }
 
-@media (max-width: 768px) {
-    .courses-grid { grid-template-columns: 1fr; }
-    .page-title { font-size: 2rem; }
+.task-card {
+    overflow-x: auto;  /* или hidden, чтобы не вылазило за края */
+}
+.task-card .task-image img {
+    max-width: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: 300px !important;
+    object-fit: contain !important;
 }
